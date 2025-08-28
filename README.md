@@ -2,6 +2,9 @@
 
 A SwiftUI iOS app that lists random users from an API with basic navigation to a detail screen. The project demonstrates a clean MVVM structure, dependency separation (Domains, Utility, Core), navigation routing, and a lightweight networking layer.
 
+## Architecture Diagram
+![Architecture Diagram](https://raw.githubusercontent.com/KavinduDissanayake/MobileAssignment/dev/architecture_diagram.png)
+
 ## Requirements
 - Xcode 15+ / iOS 17+ (min compatible with your local setup)
 - Swift Concurrency (async/await)
