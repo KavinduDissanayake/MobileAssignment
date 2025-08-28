@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CFE617F62E606E930039725B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CFE617F52E606E930039725B /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CFE617D62E606E2B0039725B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE617F62E606E930039725B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = MobileAssignment;
 			packageProductDependencies = (
+				CFE617F52E606E930039725B /* Alamofire */,
 			);
 			productName = MobileAssignment;
 			productReference = CFE617BF2E606E2A0039725B /* MobileAssignment.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = CFE617B62E606E2A0039725B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CFE617F42E606E930039725B /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CFE617C02E606E2A0039725B /* Products */;
 			projectDirPath = "";
@@ -591,6 +600,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CFE617F42E606E930039725B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CFE617F52E606E930039725B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFE617F42E606E930039725B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CFE617B72E606E2A0039725B /* Project object */;
 }
