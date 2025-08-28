@@ -14,6 +14,9 @@ final class LocalizationConfiguration {
     /// The .strings or .xcstrings table name to use. Default: "Localizable"
     var localizedFileName: String = "Localizable"
 
+    /// Bundle that contains the localization tables. Default: `.main`. Set this if your strings live in another bundle/framework.
+    var bundle: Bundle = .main
+
     /// Enable console logging for missing localization keys
     var enableMissingStringLog: Bool = true
 

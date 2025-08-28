@@ -11,30 +11,30 @@ extension String {
 
     /// Localizes the string using the `localizedFileName` from `LocalizationConfiguration`.
     public var localized: String {
-        let tableName = LocalizationConfiguration.shared.localizedFileName
-        let localizedString = NSLocalizedString(self, tableName: tableName, bundle: .main, comment: "")
-        if localizedString != self {
-            return localizedString
+        let config = LocalizationConfiguration.shared
+        let table = config.localizedFileName
+        let bundle = config.bundle
+
+        let value = bundle.localizedString(forKey: self, value: nil, table: table)
+        if value == self {
+            logMissingString("⚠️ No localized string found for key '\(self)' in table '\(table)'; returning original string.")
         }
-        logMissingString("⚠️ No localized string found for key '\(self)' in table '\(tableName)', returning original string.")
-        return self
+        return value
     }
 
     /// Localizes the string with arguments using the `localizedFileName` from `LocalizationConfiguration`.
     public func localized(with args: CVarArg...) -> String {
-        let tableName = LocalizationConfiguration.shared.localizedFileName
-        let localizedString = NSLocalizedString(self, tableName: tableName, bundle: .main, comment: "")
-        if localizedString != self {
-            return String(format: localizedString, arguments: args)
-        }
-        
-        logMissingString("⚠️ No localized string found for key '\(self)' in table '\(tableName)', returning original string with arguments.")
-        return String(format: self, arguments: args)
+        // Use the already-localized pattern and format with the current locale
+        let pattern = self.localized
+        return String(format: pattern, locale: Locale.current, arguments: args)
     }
-    
+
     /// Logs missing localization strings if `enableMissingStringLog` is enabled.
     private func logMissingString(_ message: String) {
         guard LocalizationConfiguration.shared.enableMissingStringLog else { return }
-        Logger.shared.info(message, title: "Localization")
+        // If your Logger is main-actor isolated, hop to the main actor safely
+        Task { @MainActor in
+            Logger.shared.info(message, title: "Localization")
+        }
     }
 }
