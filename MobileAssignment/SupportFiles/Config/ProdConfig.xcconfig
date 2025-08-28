@@ -1,0 +1,11 @@
+// Production configuration
+
+BASE_URL = https:\/\/randomuser.me\/api\/
+
+LOG_LEVEL = ERROR
+LOG_TO_FILE = NO
+LOG_TO_CONSOLE = NO
+
+BUNDLE_ID = $(PRODUCT_BUNDLE_IDENTIFIER)
+
+

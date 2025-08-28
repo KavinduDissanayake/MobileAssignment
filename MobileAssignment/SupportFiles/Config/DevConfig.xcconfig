@@ -1,0 +1,15 @@
+// Development configuration
+// These propagate into Info.plist via INFOPLIST_KEY_* mappings (already supported by Xcode)
+
+// Base API URL (escaped for Info.plist compatibility)
+BASE_URL = https:\/\/randomuser.me\/api\/
+
+// Logging
+LOG_LEVEL = DEBUG
+LOG_TO_FILE = YES
+LOG_TO_CONSOLE = YES
+
+// Bundle identifier passthrough
+BUNDLE_ID = $(PRODUCT_BUNDLE_IDENTIFIER)
+
+
