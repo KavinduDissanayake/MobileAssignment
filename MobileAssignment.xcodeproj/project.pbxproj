@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF5FAD492E608B6400097FB2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CF5FAD482E608B6400097FB2 /* .swiftlint.yml */; };
+		CF5FADFC2E608DF100097FB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CF5FADFB2E608DF100097FB2 /* Alamofire */; };
 		CFE617F62E606E930039725B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CFE617F52E606E930039725B /* Alamofire */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,22 @@
 			);
 			target = CFE617BE2E606E2A0039725B /* MobileAssignment */;
 		};
+		CF5FADFE2E608E7A00097FB2 /* Exceptions for "MobileAssignment" folder in "MobileAssignmentTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Domains/User+Preview.swift",
+				Domains/UserDomain.swift,
+				Domains/UserDomainProtocol.swift,
+				Domains/UserListResponse.swift,
+				SupportFiles/Config/Constants.swift,
+				Utility/Logger.swift,
+				Utility/NetworkService/NetworkError.swift,
+				Utility/NetworkService/NetworkRequesting.swift,
+				Utility/NetworkService/NetworkService.swift,
+				Utility/NetworkService/NetworkTypes.swift,
+			);
+			target = CFE617D42E606E2B0039725B /* MobileAssignmentTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -50,6 +67,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				CF5FAD3F2E6088C100097FB2 /* Exceptions for "MobileAssignment" folder in "MobileAssignment" target */,
+				CF5FADFE2E608E7A00097FB2 /* Exceptions for "MobileAssignment" folder in "MobileAssignmentTests" target */,
 			);
 			path = MobileAssignment;
 			sourceTree = "<group>";
@@ -79,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF5FADFC2E608DF100097FB2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +111,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF5FADFA2E608DF100097FB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CFE617B62E606E2A0039725B = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +125,7 @@
 				CFE617C12E606E2A0039725B /* MobileAssignment */,
 				CFE617D82E606E2B0039725B /* MobileAssignmentTests */,
 				CFE617E22E606E2B0039725B /* MobileAssignmentUITests */,
+				CF5FADFA2E608DF100097FB2 /* Frameworks */,
 				CFE617C02E606E2A0039725B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -158,6 +185,7 @@
 			);
 			name = MobileAssignmentTests;
 			packageProductDependencies = (
+				CF5FADFB2E608DF100097FB2 /* Alamofire */,
 			);
 			productName = MobileAssignmentTests;
 			productReference = CFE617D52E606E2B0039725B /* MobileAssignmentTests.xctest */;
@@ -959,6 +987,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF5FADFB2E608DF100097FB2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFE617F42E606E930039725B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		CFE617F52E606E930039725B /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CFE617F42E606E930039725B /* XCRemoteSwiftPackageReference "Alamofire" */;
