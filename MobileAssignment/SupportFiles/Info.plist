@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>BASE_URL</key>
+    <string>$(BASE_URL)</string>
+    <key>LOG_LEVEL</key>
+    <string>$(LOG_LEVEL)</string>
+    <key>LOG_TO_FILE</key>
+    <string>$(LOG_TO_FILE)</string>
+    <key>LOG_TO_CONSOLE</key>
+    <string>$(LOG_TO_CONSOLE)</string>
+    <key>BUNDLE_ID</key>
+    <string>$(BUNDLE_ID)</string>
+</dict>
+</plist>
