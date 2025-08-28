@@ -15,7 +15,18 @@ final class UserDomainTests: XCTestCase {
         var nextResponse: Any?
         var nextError: Error?
 
+        // Captured inputs
+        var lastURL: String?
+        var lastParameters: [String: Any]?
+        var lastMethod: HTTPMethod?
+        var lastEncoding: APIParameterEncoding?
+
         func request<T>(to url: String, parameters: [String: Any]?, method: HTTPMethod, encoding: APIParameterEncoding) async throws -> T where T: Decodable, T: Encodable {
+            lastURL = url
+            lastParameters = parameters
+            lastMethod = method
+            lastEncoding = encoding
+
             if let error = nextError { throw error }
             guard let response = nextResponse as? T else {
                 throw NSError(domain: "Test", code: -1)
@@ -53,7 +64,42 @@ final class UserDomainTests: XCTestCase {
             XCTFail("Expected error to be thrown")
         } catch {
             // Assert
-            XCTAssertTrue((error as NSError).code == 123)
+            XCTAssertEqual((error as NSError).code, 123)
         }
+    }
+
+    func test_fetchUsers_withEmptyResults_returnsEmptyArray() async throws {
+        let mock = NetworkClientMock()
+        mock.nextResponse = UserListResponse(results: [], info: nil)
+        let domain = UserDomain(network: mock)
+
+        let users = try await domain.fetchUsers(page: 1, results: 20)
+        XCTAssertTrue(users.isEmpty)
+    }
+
+    func test_fetchUsers_withNilResults_returnsEmptyArray() async throws {
+        let mock = NetworkClientMock()
+        mock.nextResponse = UserListResponse(results: nil, info: nil)
+        let domain = UserDomain(network: mock)
+
+        let users = try await domain.fetchUsers(page: 2, results: 50)
+        XCTAssertTrue(users.isEmpty)
+    }
+
+    func test_fetchUsers_propagatesParametersAndHTTPConfig() async throws {
+        let mock = NetworkClientMock()
+        mock.nextResponse = UserListResponse(results: [User.preview], info: nil)
+        let domain = UserDomain(network: mock)
+
+        let page = 3
+        let results = 25
+        _ = try await domain.fetchUsers(page: page, results: results)
+
+        // Assert method, encoding, and parameters propagated
+        XCTAssertEqual(mock.lastMethod, .get)
+        XCTAssertEqual(mock.lastEncoding, .urlEncoded)
+        XCTAssertEqual(mock.lastParameters?["page"] as? Int, page)
+        XCTAssertEqual(mock.lastParameters?["results"] as? Int, results)
+        XCTAssertNotNil(mock.lastURL)
     }
 }
