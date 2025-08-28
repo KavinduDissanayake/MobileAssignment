@@ -79,6 +79,9 @@ struct User: Codable, Identifiable, Equatable, Hashable {
     
     var ageText: String { dob?.age.map(String.init) ?? "—" }
     var genderText: String { (gender ?? "").capitalized }
+    var ageGenderLocalized: String {
+        "age_gender_fmt".localized(with: [ageText, genderText])
+    }
 }
 
 struct Name: Codable {

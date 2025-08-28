@@ -52,7 +52,7 @@ struct UserListContentView: View {
     private var searchResultsFooter: some View {
         HStack {
             Spacer()
-            Text("\(users.count) result(s) found")
+            Text("footer.resultsCount.format".localized(with:users.count))
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding()
@@ -65,7 +65,7 @@ struct UserListContentView: View {
             Spacer()
             ProgressView()
                 .scaleEffect(0.8)
-            Text("Loading more users...")
+            Text("loading.more.message".localized)
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.leading, 8)
@@ -82,7 +82,7 @@ struct UserListContentView: View {
                     .foregroundColor(.green)
                     .font(.title2)
                 
-                Text("All users loaded")
+                Text("status.allLoaded.message".localized)
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -102,7 +102,7 @@ struct UserListContentView: View {
                         .scaleEffect(0.8)
                         .padding(.trailing, 8)
                 }
-                Text("Load More Users")
+                Text("action.loadMore.title".localized)
                     .font(.headline)
                     .foregroundColor(.blue)
                 Spacer()

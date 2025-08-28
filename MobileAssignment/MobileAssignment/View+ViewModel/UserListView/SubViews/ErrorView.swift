@@ -16,7 +16,7 @@ struct ErrorView: View {
             Image(systemName: "exclamationmark.triangle")
                 .font(.system(size: 50))
                 .foregroundColor(.orange)
-            Text("Oops!")
+            Text("error.generic.title".localized)
                 .font(.title2)
                 .fontWeight(.bold)
             Text(message)
@@ -24,7 +24,7 @@ struct ErrorView: View {
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
-            Button("Try Again") { onRetry() }
+            Button("action.tryAgain.title".localized) { onRetry() }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
         }

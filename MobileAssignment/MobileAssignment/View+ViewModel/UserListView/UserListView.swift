@@ -35,8 +35,8 @@ struct UserListView: View {
                 )
             }
         }
-        .navigationTitle("Random Users (\(viewModel.userCount))")
-        .searchable(text: $viewModel.searchText, prompt: "Search by name")
+        .navigationTitle("navigation.randomUsers.title.format".localized(with:viewModel.userCount))
+        .searchable(text: $viewModel.searchText, prompt: "search.users.placeholder".localized)
         .onSubmit(of: .search) {
             viewModel.triggerUIAction(actionId: .tappedSearch)
         }
@@ -58,5 +58,8 @@ struct UserListView: View {
 }
 
 #Preview {
-    UserListView()
+    NavigationView {
+        UserListView()
+    }
+
 }

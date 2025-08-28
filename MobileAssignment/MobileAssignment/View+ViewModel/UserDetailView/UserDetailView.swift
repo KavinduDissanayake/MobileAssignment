@@ -22,46 +22,55 @@ struct UserDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Profile")
+        .navigationTitle("navigation.profile.title".localized)
         .navigationBarTitleDisplayMode(.inline)
     }
     
     private var profileImageSection: some View {
         VStack(spacing: 12) {
             CachedAsyncImage(url: user.largeURl)
+                .frame(width: 120, height: 120)
+                .clipShape(Circle())
+                .background(
+                    Circle().fill(Color.gray.opacity(0.3))
+                )
+                .overlay(
+                    Circle()
+                        .strokeBorder(Color.gray.opacity(0.15), lineWidth: 0.5)
+                )
             
             Text(user.fullName)
                 .font(.title2)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
             
-            Text("\(user.ageText) years old • \(user.genderText)")
+            Text(user.ageGenderLocalized)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
     }
     
     private var userInfoSection: some View {
-        InfoSectionView(title: "Personal Information") {
-            InfoRowView(icon: "envelope.fill", label: "Email", value: user.email ?? "")
-            InfoRowView(icon: "flag.fill", label: "Nationality", value: user.nat ?? "")
-            InfoRowView(icon: "calendar", label: "Date of Birth", value: user.dob?.date?.formatDate() ?? "Unknown")
+        InfoSectionView(title: "section.personal".localized) {
+            InfoRowView(icon: "envelope.fill", label: "label.email".localized, value: user.email ?? "")
+            InfoRowView(icon: "flag.fill", label: "label.nationality".localized, value: user.nat ?? "")
+            InfoRowView(icon: "calendar", label: "label.dob".localized, value: user.dob?.date?.formatDate() ?? "Unknown")
         }
     }
     
     private var contactInfoSection: some View {
-        InfoSectionView(title: "Contact Information") {
-            InfoRowView(icon: "phone.fill", label: "Phone", value: user.phone ?? "")
-            InfoRowView(icon: "iphone", label: "Cell", value: user.cell ?? "")
+        InfoSectionView(title: "section.contact".localized) {
+            InfoRowView(icon: "phone.fill", label: "label.phone".localized, value: user.phone ?? "")
+            InfoRowView(icon: "iphone", label: "label.cell".localized, value: user.cell ?? "")
         }
     }
     
     private var locationInfoSection: some View {
-        InfoSectionView(title: "Location") {
-            InfoRowView(icon: "location.fill", label: "Address", value: user.address, isMultiline: true)
+        InfoSectionView(title: "section.location".localized) {
+            InfoRowView(icon: "location.fill", label: "label.address".localized, value: user.address, isMultiline: true)
             let tzDesc = user.location?.timezone?.description ?? ""
             let tzOffset = user.location?.timezone?.offset ?? ""
-            InfoRowView(icon: "clock.fill", label: "Timezone", value: "\(tzDesc) (UTC\(tzOffset))")
+            InfoRowView(icon: "clock.fill", label: "label.timezone".localized, value: "\(tzDesc) (UTC\(tzOffset))")
         }
     }
     
@@ -133,5 +142,6 @@ struct InfoRowView: View {
 #Preview {
      NavigationView {
         UserDetailView(user: .preview)
+             .environment(\.locale, .init(identifier: "en"))
     }
 }
